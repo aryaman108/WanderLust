@@ -26,6 +26,11 @@ module.exports.showListing = async (req, res) => {
 
 module.exports.createListing = async (req, res) => {
     // Handle the image data structure properly
+    let url = req.file.path;
+    let filename = req.file.filename;
+    req.body.listing.image = {};
+    req.body.listing.image.url = url;
+    req.body.listing.image.filename = filename;
     let result = listingSchema.validate(req.body.listing);
     console.log(result);
     const { image, ...rest } = req.body.listing;
@@ -55,17 +60,26 @@ module.exports.renderEditForm = async (req, res) => {
         req.flash("error","Cannot find that listing!");
         res.redirect("/listings");
     }
-    res.render("listings/edit.ejs", { listing });
+    let originalImageurl = listing.image.url;
+    originalImageurl = originalImageurl.replace("/upload","/upload/h_300,w_300");
+    res.render("listings/edit.ejs", { listing, originalImageurl });
 }
 
 module.exports.updateListing = async (req, res) => {
     let { id } = req.params;
+
     // Handle the image data structure properly
     const { image, ...rest } = req.body.listing;
     let updateData = { ...rest };
 
-    // If image URL is provided, structure it correctly
-    if (image && (image.url || image.filename)) {
+    // If a new file is uploaded, use it
+    if (req.file) {
+        updateData.image = {
+            url: req.file.path,
+            filename: req.file.filename
+        };
+    } else if (image && (image.url || image.filename)) {
+        // Otherwise, use provided URL/filename
         updateData.image = {
             url: image.url || "",
             filename: image.filename || "listingimage"

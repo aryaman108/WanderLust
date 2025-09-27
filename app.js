@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV != "production") {
+    require("dotenv").config();
+}
+
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -78,9 +82,9 @@ app.get("/demouser", async (req, res) => {
     res.send(registeredUser);
 });
 
-app.get('/', (req, res) => {
-    res.send("hi.. ");
-});
+// app.get('/', (req, res) => {
+//     res.send("hi.. ");
+// });
 
 app.all("*",(req,res,next)=>{
     next(new ExpressError(404,"Page not Found"));
