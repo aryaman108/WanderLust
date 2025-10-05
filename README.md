@@ -105,10 +105,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👨‍💻 Author
 
-**Your Name** - [Your GitHub](https://github.com/yourusername)
+**Aryaman Parashar Behera** - [[Your GitHub](https://github.com/aryaman108)] 
 
 ## 🙏 Acknowledgments
 
 - Inspired by Airbnb and similar vacation rental platforms
 - Icons by Font Awesome
 - UI framework by Bootstrap
+
