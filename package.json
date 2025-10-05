@@ -1,4 +1,7 @@
 {
+  "engines": {
+    "node": "18.16.0"
+  },
   "name": "hotelproject",
   "version": "1.0.0",
   "description": "",
@@ -11,8 +14,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cloudinary": "^2.7.0",
+    "cloudinary": "^1.41.3",
     "connect-flash": "^0.1.1",
+    "connect-mongo": "^4.6.0",
     "cookie-parser": "^1.4.7",
     "dotenv": "^17.2.2",
     "ejs": "^3.1.10",
@@ -22,12 +26,13 @@
     "express-sessions": "^1.0.6",
     "joi": "^18.0.0",
     "method-override": "^3.0.0",
-    "mongoose": "^8.15.0",
+    "mongodb": "^4.17.2",
+    "mongoose": "^6.12.0",
     "multer": "^2.0.2",
     "multer-storage-cloudinary": "^4.0.0",
     "nodemon": "^3.1.10",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^8.0.0"
+    "passport-local-mongoose": "^6.3.0"
   }
 }
